@@ -15,7 +15,7 @@ $gray-600: hsl(0, 0%, 59%);
 }
 
 header {
-  padding-top: 1.25rem;
+  padding-top: 32px;
   width: 100vw;
   height: 300px;
   background-image: url("./images/pattern-bg-mobile.png");
@@ -32,7 +32,7 @@ h1 {
   position: relative;
   height: 56px;
   width: min(90%, 600px);
-  margin: 1rem auto;
+  margin: 18px auto;
   input {
     padding: 0 22px;
     height: 100%;
@@ -65,14 +65,14 @@ h1 {
 .info-container {
   z-index: 1000;
   position: absolute;
-  top: 160px;
+  top: 170px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 14px;
-  width: 90%;
+  width: min(90%, 1000px);
   border-radius: 12px;
   background-color: white;
 }
@@ -101,4 +101,52 @@ h1 {
 
 #map {
   height: 100%;
+}
+
+.separator {
+  width: 2px;
+  height: 64px;
+  background-color: $gray-600;
+}
+
+@media (min-width: 768px) {
+  .info-container {
+    top: 190px;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .info-wrapper:first-child {
+    margin-bottom: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  header {
+    height: 280px;
+    background-image: url("./images/pattern-bg-desktop.png");
+  }
+
+  .info-container {
+    justify-content: space-between;
+  }
+
+  .left,
+  .right {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    height: 120px;
+  }
+
+  .info-wrapper {
+    flex: 1;
+    margin: 0;
+    padding: 16px 32px 32px 16px;
+    text-align: start;
+  }
+
+  .info-wrapper:first-child {
+    margin-bottom: 0;
+  }
 }
