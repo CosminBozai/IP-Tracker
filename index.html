@@ -3,10 +3,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
     <title>IP Tracker</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <header>
+        <h1>IP Address Tracker</h1>
+        <div class="input-wrapper">
+          <input type="text" name="ip" />
+          <button class="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="14">
+              <path
+                fill="none"
+                stroke="#FFF"
+                stroke-width="3"
+                d="M2 1l6 6-6 6"
+              />
+            </svg>
+          </button>
+        </div>
+      </header>
+      <div class="info-container">
+        <div class="info-wrapper">
+          <p class="info-name">IP ADDRESS</p>
+          <p class="info">192.212.174.101</p>
+        </div>
+        <div class="info-wrapper">
+          <p class="info-name">LOCATION</p>
+          <p class="info">Brooklun, NY 10001</p>
+        </div>
+        <div class="info-wrapper">
+          <p class="info-name">TIMEZONE</p>
+          <p class="info">UTC-06:00</p>
+        </div>
+        <div class="info-wrapper">
+          <p class="info-name">ISP</p>
+          <p class="info">SpaceX Starlink</p>
+        </div>
+      </div>
+      <section class="map-section">
+        <div id="map"></div>
+      </section>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

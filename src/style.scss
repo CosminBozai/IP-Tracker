@@ -1,0 +1,104 @@
+$gray-800: hsl(0, 0%, 17%);
+$gray-600: hsl(0, 0%, 59%);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Rubik";
+}
+
+header {
+  padding-top: 1.25rem;
+  width: 100vw;
+  height: 300px;
+  background-image: url("./images/pattern-bg-mobile.png");
+  background-size: cover;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 400;
+  color: white;
+}
+
+.input-wrapper {
+  position: relative;
+  height: 56px;
+  width: min(90%, 600px);
+  margin: 1rem auto;
+  input {
+    padding: 0 22px;
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-radius: 16px;
+    font-family: "Rubik";
+    font-size: 18px;
+    font-weight: 500;
+    color: $gray-800;
+  }
+
+  .submit {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 58px;
+    background-color: black;
+    border: none;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    cursor: pointer;
+    &:hover {
+      background-color: lighten(black, 15%);
+    }
+  }
+}
+
+.info-container {
+  z-index: 1000;
+  position: absolute;
+  top: 160px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px;
+  width: 90%;
+  border-radius: 12px;
+  background-color: white;
+}
+
+.info-wrapper {
+  margin: 10px 0;
+  text-align: center;
+  .info-name {
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: $gray-600;
+  }
+
+  .info {
+    font-size: 22px;
+    font-weight: 500;
+    color: $gray-800;
+  }
+}
+
+.map-section {
+  height: calc(100vh - 300px);
+}
+
+#map {
+  height: 100%;
+}
