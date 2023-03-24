@@ -22,8 +22,9 @@
       <header>
         <h1>IP Address Tracker</h1>
         <div class="input-wrapper">
-          <input type="text" name="ip" />
-          <button class="submit">
+          <input type="text" name="ip-input" />
+          <p class="error">Not a valid IP address</p>
+          <button class="submit" id="submit">
             <svg xmlns="http://www.w3.org/2000/svg" width="11" height="14">
               <path
                 fill="none"
@@ -39,22 +40,22 @@
         <div class="left">
           <div class="info-wrapper">
             <p class="info-name">IP ADDRESS</p>
-            <p class="info">192.212.174.101</p>
+            <p class="info" id="ip"></p>
           </div>
           <div class="info-wrapper">
             <p class="info-name">LOCATION</p>
-            <p class="info">Brooklun, NY 10001</p>
+            <p class="info" id="city"></p>
           </div>
         </div>
 
         <div class="right">
           <div class="info-wrapper">
             <p class="info-name">TIMEZONE</p>
-            <p class="info">UTC-06:00</p>
+            <p class="info" id="timezone"></p>
           </div>
           <div class="info-wrapper">
             <p class="info-name">ISP</p>
-            <p class="info">SpaceX Starlink</p>
+            <p class="info" id="isp"></p>
           </div>
         </div>
       </div>
