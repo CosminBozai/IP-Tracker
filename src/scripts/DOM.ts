@@ -1,13 +1,16 @@
 import IPData from "../interface/IPData";
 
 const ipField = document.querySelector("#ip")!;
-const cityField = document.querySelector("#city")!;
+const location = document.querySelector("#location")!;
 const timezoneField = document.querySelector("#timezone")!;
 const ispField = document.querySelector("#isp")!;
 
+// Convert country code to full name
+let countryName = new Intl.DisplayNames(["en"], { type: "region" });
+
 const populateFields = (data: IPData) => {
   ipField.textContent = data.ip;
-  cityField.textContent = data.city;
+  location.textContent = data.city + ", " + countryName.of(data.country);
   timezoneField.textContent = data.timezone;
   ispField.textContent = data.isp;
 };
