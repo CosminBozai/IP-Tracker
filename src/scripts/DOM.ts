@@ -1,14 +1,12 @@
 import IPData from "../interface/IPData";
+import Fields from "../interface/Fields";
 
-const ipField = document.querySelector("#ip")!;
-const locationField = document.querySelector("#location")!;
-const timezoneField = document.querySelector("#timezone")!;
-const ispField = document.querySelector("#isp")!;
+const populateFields = (fields: Fields, data: IPData) => {
+  // Convert country code to full name
+  const countryName = new Intl.DisplayNames(["en"], { type: "region" });
 
-// Convert country code to full name
-let countryName = new Intl.DisplayNames(["en"], { type: "region" });
+  const { ipField, locationField, timezoneField, ispField } = fields;
 
-const populateFields = (data: IPData) => {
   ipField.textContent = data.ip;
   locationField.textContent = data.city + ", " + countryName.of(data.country);
   timezoneField.textContent = data.timezone;

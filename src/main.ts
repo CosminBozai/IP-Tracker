@@ -7,11 +7,18 @@ const input = document.querySelector(
   "input[name='ip-input']"
 ) as HTMLInputElement;
 
+const fields = {
+  ipField: document.querySelector("#ip")! as HTMLParagraphElement,
+  locationField: document.querySelector("#location")! as HTMLParagraphElement,
+  timezoneField: document.querySelector("#timezone")! as HTMLParagraphElement,
+  ispField: document.querySelector("#isp")! as HTMLParagraphElement,
+};
+
 const submit = document.querySelector("#submit")!;
 
 window.addEventListener("load", async () => {
   const data = await getIPLocation();
-  populateFields(data);
+  populateFields(fields, data);
   setMarker(data.latitude, data.longitude);
 });
 
@@ -22,7 +29,7 @@ submit.addEventListener("click", async () => {
 
   if (IPRegex.test(input.value)) {
     const data = await getIPLocation(input.value);
-    populateFields(data);
+    populateFields(fields, data);
     setMarker(data.latitude, data.longitude);
   } else isError(true);
 });
