@@ -1,41 +1,28 @@
 import "./style.scss";
-import * as leaflet from "leaflet";
-import * as API from "./api.json";
-import markerIcon from "./images/icon-location.svg";
-import axios from "axios";
+import getIPLocation from "./scripts/IPLocator";
+import { populateFields, isError } from "./scripts/DOM";
+import setMarker from "./scripts/Map";
 
-const getIPLocation = async () => {
-  const res = await axios.get(
-    `https://geo.ipify.org/api/v2/country,city?apiKey=${API.key}`
-  );
+const input = document.querySelector(
+  "input[name='ip-input']"
+) as HTMLInputElement;
 
-  const { lat, lng } = res.data.location;
-  console.log("🚀 ~ file: main.ts:21 ~ getIPLocation ~ lng:", lng);
-  console.log("🚀 ~ file: main.ts:21 ~ getIPLocation ~ lat:", lat);
+const submit = document.querySelector("#submit")!;
 
-  return { lat, lng };
-};
+window.addEventListener("load", async () => {
+  const data = await getIPLocation();
+  populateFields(data);
+  setMarker(data.latitude, data.longitude);
+});
 
-const setMarker = async () => {
-  // const { lat, lng } = await getIPLocation();
-  const lat = 45;
-  const lng = 20;
+submit.addEventListener("click", async () => {
+  isError(false);
 
-  var map = leaflet.map("map", { zoomControl: false }).setView([lat, lng], 7);
-  leaflet
-    .tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19,
-      attribution:
-        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    })
-    .addTo(map);
+  const IPRegex = /^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$/;
 
-  var myIcon = leaflet.icon({
-    iconUrl: markerIcon,
-    iconSize: [46, 56],
-  });
-
-  leaflet.marker([lat, lng], { icon: myIcon }).addTo(map);
-};
-
-setMarker();
+  if (IPRegex.test(input.value)) {
+    const data = await getIPLocation(input.value);
+    populateFields(data);
+    setMarker(data.latitude, data.longitude);
+  } else isError(true);
+});
