@@ -16,20 +16,33 @@ const fields = {
 
 const submit = document.querySelector("#submit")!;
 
+// Initial data
 window.addEventListener("load", async () => {
   const data = await getIPLocation();
-  populateFields(fields, data);
-  setMarker(data.latitude, data.longitude);
+  if (data) {
+    populateFields(fields, data);
+    setMarker(data.latitude, data.longitude);
+  }
 });
 
-submit.addEventListener("click", async () => {
+const SearchIP = async () => {
   isError(false);
 
   const IPRegex = /^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$/;
 
   if (IPRegex.test(input.value.trim())) {
     const data = await getIPLocation(input.value);
-    populateFields(fields, data);
-    setMarker(data.latitude, data.longitude);
+    if (data) {
+      populateFields(fields, data);
+      setMarker(data.latitude, data.longitude);
+    }
   } else isError(true);
+};
+
+submit.addEventListener("click", async () => {
+  SearchIP();
+});
+
+input.addEventListener("keydown", (e: KeyboardEvent) => {
+  if (e.key === "Enter") SearchIP();
 });
