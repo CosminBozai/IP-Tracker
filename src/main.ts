@@ -27,7 +27,7 @@ submit.addEventListener("click", async () => {
 
   const IPRegex = /^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$/;
 
-  if (IPRegex.test(input.value)) {
+  if (IPRegex.test(input.value.trim())) {
     const data = await getIPLocation(input.value);
     populateFields(fields, data);
     setMarker(data.latitude, data.longitude);
