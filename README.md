@@ -29,9 +29,17 @@ The app also includes testing with Vitest. This ensures that all the features an
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Vercel](https://ip-tracker-d99f.vercel.app/)
 
 ### Built with
+
+The app was built using a number of different technologies and tools, including:
+
+- [Vite](https://vitejs.dev/): a fast build tool that allows for rapid development and quick feedback loops
+- [TypeScript](https://www.typescriptlang.org/): a statically-typed superset of JavaScript that provides better code reliability and improved tooling
+- [Sass](https://sass-lang.com/): a preprocessor scripting language that extends CSS and provides more features and flexibility
+- [Vitest](https://vitest.dev/): a testing library specifically designed for use with Vite and Vue applications
+- [Leaflet](https://leafletjs.com/): an open-source JavaScript library for mobile-friendly interactive maps.
 
 ## Author
 
